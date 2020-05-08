@@ -44,7 +44,7 @@ CREATE TABLE `autores` (
 
 LOCK TABLES `autores` WRITE;
 /*!40000 ALTER TABLE `autores` DISABLE KEYS */;
-INSERT INTO `autores` VALUES (1,'Albert Einstein','1920-06-20'),(2,'Rubén Darío','1930-09-12'),(3,'Steve Jobs','1964-02-19'),(4,'Ludwig van Beethoven','1770-12-16'),(5,'Napoleón Bonaparte','1830-11-05'),(6,'Oscar Wilde','0000-00-00'),(7,'Jacinto Benavente','1866-08-12');
+INSERT INTO `autores` VALUES (1,'Albert Einstein','1920-06-20'),(2,'Rubén Darío','1930-09-12'),(3,'Steve Jobs','1964-02-19'),(4,'Ludwig van Beethoven','1770-12-16'),(5,'Napoleón Bonaparte','1830-11-05'),(6,'Oscar Wilde','1854-10-16'),(7,'Jacinto Benavente','1866-08-12');
 /*!40000 ALTER TABLE `autores` ENABLE KEYS */;
 UNLOCK TABLES;
 
