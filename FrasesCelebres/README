@@ -1,0 +1,8 @@
+Atender a los parámetros para acceder a la BD.
+En clase  src/main/java/com/aula114/bean/ServiceFrase.java
+
+***Deducir las dos tablas, e insertar datos, falta script de creación.  [hecho]
+
+Ver en pom.xml, se prevee desplegar en tomee
+
+mvn install tomee:run

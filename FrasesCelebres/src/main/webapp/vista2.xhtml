@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:p="http://primefaces.org/ui"
+        xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+</h:head>
+<h:body>
+	<h2>Frases Célebres</h2>
+	<h:form id="form">
+		<h3>Selecciona categoría:</h3>
+
+                  <p:selectOneMenu value="#{viewManager.categoriaSeleccionada}">
+                    <p:ajax event="change" update=":form" listener="#{viewManager.cateChange}" />
+                        <f:selectItems value="#{viewManager.listaCategorias}" />
+                  </p:selectOneMenu>
+
+               <ui:remove>
+
+		<h:selectOneMenu value="#{viewManager.categoriaSeleccionada}">
+			<f:selectItems value="#{viewManager.listaCategorias}" />
+		</h:selectOneMenu>
+		<h:commandButton value="Ver" action="#{viewManager.add}" update=":form:pd" />
+               </ui:remove>
+	        <ui:repeat value="#{viewManager.listaFrasesCategoria}" var="frase">
+               <ui:remove>
+                  <p:dataList id="pd" value="#{viewManagaer.listaFrasesCategoria}" 
+                       rendered="#{viewManager.categoriaSeleccionada != null}"
+                        type="ordered" paginator="true" styleClass="paginated" rows="5"/>
+               </ui:remove>
+
+		  <h4><h:outputText value="#{frase.frase}" /></h4>
+		  <p><h:outputText value="#{frase.autor.nombre}" /></p>
+                  <h:link value="Otras frases de #{frase.autor.nombre}" outcome="mostrarUno">
+                     <f:param name="unNombre" value="#{frase.autor.nombre}" />
+                  </h:link>
+	        </ui:repeat>
+	</h:form>
+</h:body>
+</html>
