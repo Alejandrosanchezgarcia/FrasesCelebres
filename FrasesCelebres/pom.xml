@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.aula114</groupId>
 	<artifactId>proyJSF_2</artifactId>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<version>1.0.0</version>
 	<name>JSFMaven</name>
         <properties>
