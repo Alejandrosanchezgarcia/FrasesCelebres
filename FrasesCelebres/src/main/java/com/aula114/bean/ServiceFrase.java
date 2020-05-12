@@ -26,6 +26,9 @@ public class ServiceFrase implements Serializable {
 	private Connection conn;
 	private Set<String> lCategorias;
 	private List<FraseCelebre> lFCategoria;
+	private Set<String> lAutores;
+	private List<FraseCelebre> lFAutores;
+
 	
         private void conectar() {
 		try {
@@ -95,7 +98,7 @@ public class ServiceFrase implements Serializable {
 		}
 		return lFCategoria;
 	}
-	public List<String> mostrarFrasesPorAutor(String autorSeleccionado) {
+	/*public List<String> mostrarFrasesPorAutor(String autorSeleccionado) {
 		List<String> lista = new ArrayList<String>();
 		try {
 			conectar();
@@ -114,6 +117,56 @@ public class ServiceFrase implements Serializable {
 			desconectar();
 		}
 		return lista;
+	}*/
+	public List<FraseCelebre> mostrarFrasesPorAutor(String autorSeleccionado) {
+                FraseCelebre fc;
+                Autor a;
+		lFAutores = new ArrayList<FraseCelebre>();
+		try {
+			conectar();
+                        String sql = "select descripcion, nombre_completo, fecha_nac from autores, frases " + "where categoria = '"
+                                        + autorSeleccionado + "' and autores.id_autor = frases.id_autor";
+
+			PreparedStatement stmt2;
+			stmt2 = conn.prepareStatement(sql);
+			ResultSet rset = stmt2.executeQuery();
+			while (rset.next()) {
+				fc = new FraseCelebre();
+				a = new Autor();
+				a.setNombre(rset.getString("nombre_completo"));
+				a.setFechaNac(rset.getDate("fecha_nac"));
+				fc.setAutor(a);
+				fc.setFrase(rset.getString("descripcion"));
+				lFAutores.add(fc);
+			}
+			rset.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			desconectar();
+		}
+		return lFAutores;
+	}
+
+	public Set<String> mostrarAutores() {
+		lAutores = new HashSet<String>();
+		try {
+			conectar();
+			String sql = "select nombre_completo from autores";
+			PreparedStatement stmt1;
+			stmt1 = conn.prepareStatement(sql);
+			ResultSet rset = stmt1.executeQuery();
+			lAutores.add(" ");
+			while (rset.next()) {
+				lAutores.add(rset.getString("autores"));
+			}
+			rset.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			desconectar();
+		}
+		return lAutores;
 	}
 
 }
