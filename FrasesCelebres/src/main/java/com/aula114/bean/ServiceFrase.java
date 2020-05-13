@@ -98,17 +98,18 @@ public class ServiceFrase implements Serializable {
 		}
 		return lFCategoria;
 	}
-	/*public List<String> mostrarFrasesPorAutor(String autorSeleccionado) {
-		List<String> lista = new ArrayList<String>();
+
+	public Set<String> mostrarAutores() {
+		lAutores = new HashSet<String>();
 		try {
 			conectar();
-                        System.out.println("Autor seleccionado: " + autorSeleccionado + " ////////");
-			String sql = "select descripcion from autores,frases where nombre_completo = " + "'" + autorSeleccionado  + "'" + " and autores.id_autor = frases.id_autor";
-			PreparedStatement stmt2;
-			stmt2 = conn.prepareStatement(sql);
-			ResultSet rset = stmt2.executeQuery();
+			String sql = "select nombre_completo from autores";
+			PreparedStatement stmt1;
+			stmt1 = conn.prepareStatement(sql);
+			ResultSet rset = stmt1.executeQuery();
+			lAutores.add(" ");
 			while (rset.next()) {
-				lista.add(rset.getString("descripcion"));
+				lAutores.add(rset.getString("nombre_completo"));
 			}
 			rset.close();
 		} catch (SQLException e) {
@@ -116,15 +117,15 @@ public class ServiceFrase implements Serializable {
 		} finally {
 			desconectar();
 		}
-		return lista;
-	}*/
+		return lAutores;
+	}
 	public List<FraseCelebre> mostrarFrasesPorAutor(String autorSeleccionado) {
                 FraseCelebre fc;
                 Autor a;
 		lFAutores = new ArrayList<FraseCelebre>();
 		try {
 			conectar();
-                        String sql = "select descripcion, nombre_completo, fecha_nac from autores, frases " + "where categoria = '"
+                        String sql = "select descripcion, nombre_completo, fecha_nac from autores, frases " + "where nombre_completo = '"
                                         + autorSeleccionado + "' and autores.id_autor = frases.id_autor";
 
 			PreparedStatement stmt2;
@@ -148,25 +149,6 @@ public class ServiceFrase implements Serializable {
 		return lFAutores;
 	}
 
-	public Set<String> mostrarAutores() {
-		lAutores = new HashSet<String>();
-		try {
-			conectar();
-			String sql = "select nombre_completo from autores";
-			PreparedStatement stmt1;
-			stmt1 = conn.prepareStatement(sql);
-			ResultSet rset = stmt1.executeQuery();
-			lAutores.add(" ");
-			while (rset.next()) {
-				lAutores.add(rset.getString("autores"));
-			}
-			rset.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			desconectar();
-		}
-		return lAutores;
-	}
+	
 
 }
