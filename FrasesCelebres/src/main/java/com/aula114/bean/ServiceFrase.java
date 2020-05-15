@@ -57,7 +57,6 @@ public class ServiceFrase implements Serializable {
 			PreparedStatement stmt1;
 			stmt1 = conn.prepareStatement(sql);
 			ResultSet rset = stmt1.executeQuery();
-			lCategorias.add(" ");
 			while (rset.next()) {
 				lCategorias.add(rset.getString("categoria"));
 			}
@@ -107,7 +106,6 @@ public class ServiceFrase implements Serializable {
 			PreparedStatement stmt1;
 			stmt1 = conn.prepareStatement(sql);
 			ResultSet rset = stmt1.executeQuery();
-			lAutores.add(" ");
 			while (rset.next()) {
 				lAutores.add(rset.getString("nombre_completo"));
 			}
