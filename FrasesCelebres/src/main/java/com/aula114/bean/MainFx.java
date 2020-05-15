@@ -10,9 +10,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.ComboBox;
-import javafx.geometry.Pos;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
+
 
 import com.aula114.bean.ServiceFrase;
 import com.aula114.model.FraseCelebre;
@@ -52,8 +50,7 @@ public class MainFx extends Application{
 		cbAut.setOnAction(e -> cbAut.setVisible(true));
 		cbAut.setPromptText("Elija autor");
 		cbAut.getItems().addAll(setAut);
-		Button button2= new Button("volver");
-		button2.setAlignment(Pos.BOTTOM_LEFT);
+		Button button2= new Button("volver");		
 		button2.setOnAction(e -> primaryStage.setScene(scene1));
 		Button buttonSelAut = new Button("Ir a selección");
 
