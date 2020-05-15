@@ -9,131 +9,55 @@
 	<version>1.0.0</version>
 	<name>JSFMaven</name>
         <properties>
-         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+         	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         </properties>
-	<dependencies>
-		<dependency>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-compiler-plugin</artifactId>
-			<version>3.3</version>
-			<type>maven-plugin</type>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish</groupId>
-			<artifactId>javax.faces</artifactId>
-			<version>2.2.9</version>
-		</dependency>
-		<dependency>
-			<groupId>org.primefaces</groupId>
-			<artifactId>primefaces</artifactId>
-			<version>5.3</version>
-		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.40</version>
-		</dependency>
-                <dependency>
-                  <groupId>redis.clients</groupId>
-                  <artifactId>jedis</artifactId>
-                  <version>2.7.2</version>
-                </dependency>
-             <!-- https://mvnrepository.com/artifact/org.apache.openejb/tomee-embedded -->
-            <!--    <dependency>
-                  <groupId>org.apache.openejb</groupId>
-                  <artifactId>tomee-embedded</artifactId>
-                  <version>1.7.5</version>
-                </dependency> -->
-            <!--    <dependency>
-    <groupId>org.apache.openejb</groupId>
-    <artifactId>tomee-embedded</artifactId>
-    <version>1.7.1</version>
-</dependency> -->
-	</dependencies>
-
-	<build>
-		<plugins>
-                         <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-site-plugin</artifactId>
-        <version>3.6</version>
-        <configuration>
-         <outputEncoding>UTF-8</outputEncoding>
-        </configuration>
-      </plugin>
-                         
-                         <plugin>
-                           <groupId>org.apache.maven.plugins</groupId>
-                           <artifactId>maven-resources-plugin</artifactId>
-                           <version>3.0.2</version>
-                           <configuration>
-                             <encoding>UTF-8</encoding>
-                           </configuration>
-                        </plugin>
-
-			<plugin>
-				<groupId>org.apache.openejb.maven</groupId>
-				<artifactId>tomee-maven-plugin</artifactId>
-				<version>1.7.1</version>
-                                <configuration>
-					<tomeeClassifier>plus</tomeeClassifier>
-					<webapps>
-						<webapp>com.aula114:proyJSF_2:1.0.0</webapp>
-					</webapps>
-<!--
-    <inlinedServerXml>
-      <Server port="8005" shutdown="SHUTDOWN">
-        <Listener className="org.apache.tomee.catalina.ServerListener"/>
-        <Listener className="org.apache.catalina.startup.VersionLoggerListener"/>
-        <Service name="Catalina">
-          <Connector port="8070" protocol="HTTP/1.1" URIEncoding="UTF-8"/>
-          <Engine name="Catalina" defaultHost="localhost">
-            <Host name="localhost" appBase="webapps"
-                  unpackWARs="true" autoDeploy="true">
-            </Host>
-          </Engine>
-        </Service>
-      </Server>
-    </inlinedServerXml>
--->
-  </configuration>
-				
-			</plugin>
-			<plugin>
+		<dependencies>
+			<dependency>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.3</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.6</version>
-				<configuration>
-					<webXml>src/main/webapp/WEB-INF/web.xml</webXml>
-				</configuration>
-			</plugin>
-                        <plugin>
-          <groupId>org.apache.tomcat.maven</groupId>
-          <artifactId>tomcat7-maven-plugin</artifactId>
-          <version>2.2</version>
-                <configuration>
-                    <port>8095</port>
-                    <path>/app1</path>
-                    <uriEncoding>UTF-8</uriEncoding>
-                </configuration>
-                         </plugin>
-
-		</plugins>
-		<finalName>JSFMaven</finalName>
-	</build>
+				<type>maven-plugin</type>
+			</dependency>
+			<dependency>
+				<groupId>org.glassfish</groupId>
+				<artifactId>javax.faces</artifactId>
+				<version>2.2.9</version>
+			</dependency>
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>5.1.40</version>
+			</dependency>
+		</dependencies>
+		<build>
+			<plugins>
+                <plugin>
+        			<groupId>org.apache.maven.plugins</groupId>
+        			<artifactId>maven-site-plugin</artifactId>
+        			<version>3.6</version>
+        			<configuration>
+         				<outputEncoding>UTF-8</outputEncoding>
+        			</configuration>
+      			</plugin>
+      			<plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.0.2</version>
+                    <configuration>
+                        <encoding>UTF-8</encoding>
+                    </configuration>
+                </plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.3</version>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+					</configuration>
+				</plugin>
+			</plugins>
+			<finalName>JSFMaven</finalName>
+		</build>
 </project>
+
