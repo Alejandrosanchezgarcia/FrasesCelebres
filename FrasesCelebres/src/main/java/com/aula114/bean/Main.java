@@ -12,9 +12,9 @@ public class Main {
 	public static void main(String[] args) {
 		ServiceFrase service = new ServiceFrase();
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Dime que deseas buscar, autores o categorias.");
+		System.out.println("Dime que deseas buscar, autores o categorias. Para Salir EOF");
 		String buscar = sc.nextLine();
-
+		while(true){
 		if(buscar.equalsIgnoreCase("categorias")){
 			Set<String> setCat = service.mostrarCategorias();
 			System.out.println("Bienvenido al registro de frases celebres\nElija entre las siguientes categorias:\n" + setCat);
@@ -54,6 +54,9 @@ public class Main {
 			}
 
 		}
+		System.out.println("Dime que deseas buscar, autores o categorias. Para Salir EOF");
+		buscar = sc.nextLine();
+	}
 		
 	}	
 }
